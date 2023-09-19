@@ -1,8 +1,8 @@
 ## Descrição
 
-Neste exercício, você irá criar uma página web que exibe um formulário usado para coletar as informações de contato de um usuário.
+Neste exercício, você irá criar uma página web que exibe um site de notícias que deverá ser estilizado.
 
-O objetivo deste exercício é praticar maneiras de estilizar um formulário usando seletores CSS.
+O objetivo deste exercício é praticar o uso de seletores CSS pseudo-classes.
 
 **Todas as alterações devem ser feitas nos arquivos já existentes**
 
@@ -11,40 +11,77 @@ O objetivo deste exercício é praticar maneiras de estilizar um formulário usa
 * src/js/script.js -> quando for necessário alterar JavaScript
 
 ## Instruções:
-
- 1. O arquivo **index.html** possui o formulário abaixo:
+ - O **index.html** possui o código a seguir:
 
 ```html
-<form>
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-    </div>
-    
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email">
-    </div>
-    
-    <div>
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone">
-    </div>
+<header>
+  <h1>Mantenha-se informado</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Principal</a></li>
+      <li><a href="#">Sobre nós</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Seja bem-vindo!</h2>
+    <p>Aqui você vai ficar antenado sobre tudo!.</p>
+  </section>
+  <section id="artigos-em-destaque">
+    <h2>Destaques</h2>
+    <ul>
+      <li>
+        <article>
+          <h3><a href="#">Artigo 1</a></h3>
+          <p class="date">Publicado em 01 de Janueiro de 2023</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
+        </article>
+      </li>
+      <li>
+        <article>
+          <h3><a href="#">Artigo 2</a></h3>
+          <p class="date">Publicado em 15 de February de 2023</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
+        </article>
+      </li>
+    </ul>
+  </section>
+  <section id="mais-recentes">
+    <h2>Mais recentes</h2>
+    <ul>
+      <li>
+        <article>
+          <h3><a href="#">Artigo 4</a></h3>
+          <p class="date">Publicado em 15 de Março de 2023</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
+        </article>
+      </li>
+      <li>
+        <article>
+          <h3><a href="#">Artigo 5</a></h3>
+          <p class="date">Publicado em 18 de Março de 2023</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
+        </article>
+      </li>
+    </ul>
+  </section>
+</main>
 
-    <div>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message"></textarea>
-    </div>
-    <input type="submit">Submit</button>
-  </form>
 ```
-Usando seletores CSS, aplique os estilos a seguir:
 
-- Altere o tamanho da fonte de todas as *label* para *1.1em*.
-- Altere a cor de plano de fundo de todos os elementos de entrada, incluindo o de entrada de texto, para *#f4f4f4*.
-- Altere a borda de todos os elementos de entrada de modo que elas fiquem arredondadas (3px).
-- Altere a cor do texto e do plano de fundo do botão de envio do formulário para *white* e *#007bff* respectivamente.
-- As divs devem ser separadas por margens inferiores de 10px
+- Escolha os seletores CSS mais adequados e aplique os estilos a seguir alterando o arquivo **estilo.css**:
+
+  - Defina a família de fontes da página inteira como *'Helvetica, Arial, sans-serif'*.
+  - Altere a cor de fundo do cabeçalho (*header*) para *#1282A2*
+  - Altere a cor da fonte dos links de navegação para *#FEFCFB*
+  - Altere a cor da fonte dos títulos das seções para *#001F54*
+  - Altere o tamanho da fonte das datas dos artigos para *14px* 
+  - Altere o estilo da fonte das datas dos artigos para *itálico*
+  - Altere a cor da fonte das datas dos artigos para *#034078*
+  - Defina a cor de fundo dos itens ímpar da lista da seção 'Artigos em destaque' para *#B0E3F1*
+  - Defina a cor do texto dos links localizados dentro de elementos *h3* para *#034078*
 
 ## Recomendações
 
