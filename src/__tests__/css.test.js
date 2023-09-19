@@ -22,7 +22,7 @@ afterEach(() => {
 
 test("A família de fontes da página inteira como 'Helvetica, Arial, sans-serif'", () => {
   let style =  window.getComputedStyle(document.body);
-  expect(style.fontFamily).toBe("'Helvetica, Arial, sans-serif'");
+  expect(style.fontFamily).toBe("Helvetica, Arial, sans-serif");
 })
 
 test('A cor de fundo do cabeçalho (header) deve ser #1282A2', () => {
