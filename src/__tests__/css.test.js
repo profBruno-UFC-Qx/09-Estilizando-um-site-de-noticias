@@ -1,7 +1,5 @@
 const fs = require('fs');
-import {screen} from '@testing-library/dom'
-
-let container =  null
+import {screen, getByRole, getAllByRole} from '@testing-library/dom'
 
 beforeEach(() => {
   const fileContent = fs.readFileSync('src/index.html', 'utf8');
@@ -22,56 +20,75 @@ afterEach(() => {
 
 
 
-test('Todos as labels devem possuir fonte de tamanho igual 1.1em', () => {
-
-  const label1 = screen.getByText("Name:");
-  let style =  window.getComputedStyle(label1);
-  expect(style.fontSize).toBe('1.1em');
-
-  const label2 = screen.getByText("Email:");
-  style =  window.getComputedStyle(label2);
-  expect(style.fontSize).toBe('1.1em');
-
-  const label3 = screen.getByText("Phone:");
-  style =  window.getComputedStyle(label3);
-  expect(style.fontSize).toBe('1.1em');
-
-  const label4 = screen.getByText("Message:");
-  style =  window.getComputedStyle(label4);
-  expect(style.fontSize).toBe('1.1em');
+test("A família de fontes da página inteira como 'Helvetica, Arial, sans-serif'", () => {
+  let style =  window.getComputedStyle(document.body);
+  expect(style.fontFamily).toBe("'Helvetica, Arial, sans-serif'");
 })
 
-test('Todos os elementos elementos de entrada, incluindo o textarea, devem ter o plano de fundo na cor #f4f4f4', () => {
-  const list = screen.getAllByRole("textbox");
+test('A cor de fundo do cabeçalho (header) deve ser #1282A2', () => {
+  const item = screen.getByRole("banner");
+  const style =  window.getComputedStyle(item);
+  expect(style.backgroundColor).toBe('rgb(18, 130, 162)');
+})
+
+test('A cor da fonte dos links de navegação devem ser #FEFCFB', () => {
+  const nav = screen.getByRole("navigation");
+  const list = getAllByRole(nav, "link");
   for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.backgroundColor).toBe('rgb(244, 244, 244)');
+    expect(styles.color).toBe('rgb(254, 252, 251)');
   }
 })
 
-test('Todos os elementos elementos devem ter a bordar arredondada em 3px', () => {
-  const list = screen.getAllByRole("textbox");
-  for (let item of list) {
-    const styles =  window.getComputedStyle(item);
-    expect(styles.borderRadius).toBe('3px');
-  }
-})
-
-test('O botão de submit deve ter plano de fundo na cor #007bff e text na cor branca', () => {
-  const button = screen.getByRole("button");
-  const style =  window.getComputedStyle(button);
-  expect(style.color).toBe('white');
-  expect(style.backgroundColor).toBe('rgb(0, 123, 255)');
-  
-})
-
-test('Todos as divs devem possuir margem inferior de 10px', () => {
-  const list = screen.getAllByRole("generic");
-  for (let item of list) {
-    const styles =  window.getComputedStyle(item);
-    expect(styles.marginBottom).toBe('10px');
+test('A cor da fonte dos títulos das seções devem ser #001F54', () => {
+  const levels = [1, 2]
+  for (const level of levels) {
+    const list = screen.getAllByRole("heading", { level });
+    for (let item of list) {
+      const styles =  window.getComputedStyle(item);
+      expect(styles.color).toBe('rgb(0, 31, 84)');
+    }
   }
 })
 
 
+test('O tamanho da fonte das datas dos artigos deve ser de 14px', () => {
+  const list = document.querySelectorAll("article p.date")
+  for (let item of list) {      
+    const styles =  window.getComputedStyle(item);
+    expect(styles.fontSize).toBe('14px');
+  }
+})
 
+test('O estilo da fonte das datas dos artigos deve ser de itálico', () => {
+  const list = document.querySelectorAll("article p.date")
+  for (let item of list) {      
+    const styles =  window.getComputedStyle(item);
+    expect(styles.fontStyle).toBe('italic');
+  }
+})
+
+test('A cor da fonte das datas dos artigos deve ser #034078', () => {
+  const list = document.querySelectorAll("article p.date")
+  for (let item of list) {      
+    const styles =  window.getComputedStyle(item);
+    expect(styles.color).toBe('rgb(3, 64, 120)');
+  }
+})
+
+test('A cor do plano de fundo os itens ímpares da lista da seção Artigos em destaque devem ser na cor #B0E3F1', () => {
+  const list = document.querySelectorAll("#destaques > ul >li:nth-child(2n + 1)")
+  for (let item of list) {      
+    const styles =  window.getComputedStyle(item);
+    expect(styles.backgroundColor).toBe('rgb(176, 227, 241)');
+  }
+})
+
+test('A cor da fonte dos links localizados dentro de um h3 devem ser #034078', () => {
+  const h3s = screen.getAllByRole("heading", { level: 3 });
+  for (const h3 of h3s) {
+    const item = getByRole(h3, "link");
+    const styles =  window.getComputedStyle(item);
+    expect(styles.color).toBe('rgb(18, 130, 162)');
+  }
+})

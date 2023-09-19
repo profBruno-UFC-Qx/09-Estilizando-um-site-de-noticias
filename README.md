@@ -81,7 +81,7 @@ O objetivo deste exercício é praticar o uso de seletores CSS pseudo-classes.
   - Altere o estilo da fonte das datas dos artigos para *itálico*
   - Altere a cor da fonte das datas dos artigos para *#034078*
   - Defina a cor de fundo dos itens ímpar da lista da seção 'Artigos em destaque' para *#B0E3F1*
-  - Defina a cor do texto dos links localizados dentro de elementos *h3* para *#034078*
+  - Defina a cor do texto dos links localizados dentro de elementos *h3* para *#1282A2*
 
 ## Recomendações
 
